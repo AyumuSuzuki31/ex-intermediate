@@ -1,7 +1,5 @@
 package com.example.ex_intermediate.repository;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 
@@ -25,19 +23,16 @@ public class BaseballTeamRepository {
     /**
      * BaseballTeamのRowMapper
      */
-    private static final RowMapper<BaseballTeam> BASEBALL_TEAM_ROW_MAPPER = new RowMapper<BaseballTeam>() {
-        @Override
-        public BaseballTeam mapRow(ResultSet rs, int rowNum) throws SQLException {
-            BaseballTeam team = new BaseballTeam();
-            team.setId(rs.getInt("id"));
-            team.setLeagueName(rs.getString("league_name"));
-            team.setTeamName(rs.getString("team_name"));
-            team.setHeadquarters(rs.getString("headquarters"));
-            team.setInauguration(rs.getString("inauguration"));
-            team.setHistory(rs.getString("history"));
-            return team;
-        }
-    };
+    private static final RowMapper<BaseballTeam> BASEBALL_TEAM_ROW_MAPPER = (rs, i) -> {
+        BaseballTeam team = new BaseballTeam();
+        team.setId(rs.getInt("id"));
+        team.setLeagueName(rs.getString("league_name"));
+        team.setTeamName(rs.getString("team_name"));
+        team.setHeadquarters(rs.getString("headquarters"));
+        team.setInauguration(rs.getString("inauguration"));
+        team.setHistory(rs.getString("history")); 
+        return team;
+        };
 
     /**
      * チーム一覧を発足日の昇順で取得
