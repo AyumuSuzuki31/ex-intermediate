@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- http://localhost:8080/ex-intermediate/ -->
+</head>
+<body>
+  <h2>野球チーム一覧</h2>
+  <p th:each="team : ${teams}">
+    <a th:text="${team.teamName}" th:href="@{/team-detail(id=${team.id})}"></a>
+  </p>
+  
+
+</body>
+</html>
