@@ -7,6 +7,11 @@
   <!-- http://localhost:8080/ex-intermediate/ -->
 </head>
 <body>
+  <h2>野球チーム一覧</h2>
+  <p th:each="team : ${teams}">
+    <a th:text="${team.teamName}" th:href="@{/team-detail(id=${team.id})}"></a>
+  </p>
   
+
 </body>
 </html>
